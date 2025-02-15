@@ -1,3 +1,6 @@
+//Binary Search
+//Link:https://leetcode.com/problems/binary-search/description/
+
 class Solution {
     public int search(int[] nums, int target) {
         int n=nums.length;

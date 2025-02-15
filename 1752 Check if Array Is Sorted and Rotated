@@ -1,3 +1,6 @@
+//Check if the Array is Sorted and Rotated
+//Link:https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/description/
+
 class Solution {
     public boolean check(int[] arr) {
         int cnt=0;
