@@ -1,0 +1,71 @@
+//Sort List
+// Link: https://leetcode.com/problems/sort-list/description/
+
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public static ListNode mergeSort(ListNode List1, ListNode List2) {
+        ListNode dummyNode = new ListNode(-1);
+        ListNode temp = dummyNode;
+
+        while (List1 != null && List2 != null) {
+            if (List1.val <= List2.val) {
+                temp.next = List1;
+                List1 = List1.next;
+            } else {
+                temp.next = List2;
+                List2 = List2.next;
+            }
+            temp = temp.next;
+        }
+
+        if (List1 != null) {
+            temp.next = List1;
+        } else {
+            temp.next = List2;
+        }
+
+        return dummyNode.next;
+    }
+
+    public static ListNode findMiddle(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head.next; // Start `fast` at `head.next` to find the correct middle
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow; // `slow` is now the correct middle node
+    }
+
+    public ListNode sortList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode middle = findMiddle(head);
+        ListNode right = middle.next;
+        middle.next = null;  // Break the list into two halves
+
+        ListNode left = sortList(head);
+        right = sortList(right);
+
+        return mergeSort(left, right);
+    }
+}
