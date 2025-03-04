@@ -1,0 +1,13 @@
+//Reverse Words in a String-Palindrome Check
+//Link: https://leetcode.com/problems/reverse-words-in-a-string/solutions/
+
+
+class Solution {
+    public String reverseWords(int i,String s) {
+        if(s.charAt(i)!=s.charAt(s.length()-i-1)){
+        return false;
+        }
+        return true;
+        
+    }
+}
